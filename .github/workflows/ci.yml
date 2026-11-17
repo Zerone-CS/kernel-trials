@@ -1,0 +1,31 @@
+name: CPU and documentation checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  cpu-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.9', '3.12']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install numerical test dependencies
+        run: python -m pip install -r requirements-npu.txt
+      - name: Unit and CPU integration tests
+        run: python -m unittest discover -s tests -v
+      - name: Documentation and configuration checks
+        run: python scripts/check_docs.py
+      - name: Verify public export
+        run: |
+          python scripts/export_public.py --output "${RUNNER_TEMP}/operator-eval-public"
+          python scripts/check_docs.py --root "${RUNNER_TEMP}/operator-eval-public"

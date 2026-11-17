@@ -1,0 +1,44 @@
+{
+  "name": "batchmatmulmaxsum_fixed_harness_debug_v0.1",
+  "status": "DEVELOPMENT_PROTOCOL_NOT_A_SECURE_AGENT_BENCHMARK",
+  "only_submitted_file": "kernel.asc",
+  "npu_arch": "dav-2201",
+  "input_dtype_codes": {"fp16": 1, "bf16": 2},
+  "output_dtype": "fp32",
+  "correctness": {
+    "golden": "quantized input values -> FP64 BMM -> max N -> sum M -> FP32",
+    "comparison": "abs(actual-golden) <= 1e-4 + 1e-4*abs(golden)",
+    "all_output_elements_must_pass": true,
+    "finite_required": true,
+    "input_unchanged_and_allocation_guards": true
+  },
+  "timing": {
+    "primary_metric": "msprof_device_task_duration",
+    "mode": "fresh process per shape and independent capture; fixed input buffers",
+    "warmup_calls": 8,
+    "measured_calls": 32,
+    "independent_captures": 3,
+    "aggregation": "median of per-capture medians",
+    "profiler": "msprof",
+    "ai_core": "on",
+    "aic_metrics": "PipeUtilization",
+    "runtime_api": "on",
+    "association": "isolated single-shape capture, one device compute task per invocation declared; exact count checked; not independently proven call mapping",
+    "multi_kernel": "measurement unsupported in this prototype; not automatically a task rule violation",
+    "secondary_metric": "host run_kernel + stream completion elapsed; never substituted for device duration"
+  },
+  "score": {
+    "case_count": 15,
+    "formula": "100 / (1 + log_1.5(max(1, t_candidate / t_reference)))",
+    "aggregate": "arithmetic mean across all 15 public performance shapes",
+    "correctness_gate": "all cases in declared correctness suite pass",
+    "reference": "frozen 6368f40c source recompiled and measured under this exact protocol; not theoretical optimum",
+    "uncapped_speedup_reported": true
+  },
+  "limitations": [
+    "Trusted-candidate debugging only: no OS/container security isolation for arbitrary agent code.",
+    "Boundary suite is inspectable in this prototype, not a sealed hidden test suite.",
+    "No agent launcher, external budget controller or cross-agent statistical benchmark yet.",
+    "No claim to replicate unpublished CANNJudge timing conditions."
+  ]
+}

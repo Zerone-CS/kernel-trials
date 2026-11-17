@@ -1,0 +1,14 @@
+{
+  "reference_archive": "operator_trajectory_20261022/final/kernel_6368f40c.asc",
+  "reference_sha256": "6368f40c1597e330c8c5f44d030874da54f01e613760b87f53e06f3f6ffabc7e",
+  "optimize": {
+    "sha256": "955ffc3580d48cab5e2f44ff727ebd4df8414b292596aa2f5f4b2693701cb46f",
+    "construction": "Keep reference lines 1-471, 6788-6811 and 6828-6831 (one-based inclusive), with one separating blank line before run_kernel.",
+    "implementation": "Generic fused_base_tile implementation and run_fused_base_tiles; fixed ABI validation; specialized dispatch paths removed.",
+    "not_the_scoring_reference": true
+  },
+  "from_scratch": {
+    "sha256": "2b044fd3d6e24f91305fa6dcfc378ca1f42301671e43114ca05de1ff259fc2d8",
+    "construction": "Fixed ABI placeholder that throws NOT_IMPLEMENTED."
+  }
+}

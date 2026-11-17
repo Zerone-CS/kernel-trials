@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "name": "knowledge-ab",
+  "track": "optimize",
+  "tasks": ["case06", "case08", "case15"],
+  "repeats": 3,
+  "control": "baseline",
+  "runner": {"provider": "claude"},
+  "policy": {"max_feedback": 20, "active_seconds": 3600},
+  "conditions": [
+    {"id": "baseline", "label": "原始 Agent"},
+    {"id": "knowledge", "label": "Agent + 知识库", "instructions": "结合 method/knowledge/ 中的资料完成本次算子开发。自行判断资料是否适用于本题。", "resources": ["knowledge"]}
+  ]
+}

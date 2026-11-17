@@ -1,0 +1,15 @@
+{
+  "testing_only": true,
+  "platform": "cpu_smoke_only",
+  "correctness": {"repeats": 3, "atol": 0.000001, "rtol": 0.000001},
+  "timing": {
+    "metric": "cpu_host_wall_us",
+    "warmup_calls": 4,
+    "measured_calls": 16,
+    "independent_captures": 1,
+    "aggregation": "median",
+    "trusted_for_competitive_scoring": false
+  },
+  "score": {"enabled": false, "reason": "CPU integration fixture, not an NPU operator benchmark"},
+  "limits": {"build_seconds": 60, "case_seconds": 10, "profile_seconds": 10}
+}

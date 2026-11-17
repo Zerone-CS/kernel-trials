@@ -1,0 +1,4 @@
+# Data generation/oracle dependencies; CANN, msprof and CMake are system tools.
+# Record installed versions with experiment results; this is not a lockfile.
+numpy>=1.24
+ml_dtypes>=0.2

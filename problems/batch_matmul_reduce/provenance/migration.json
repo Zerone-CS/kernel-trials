@@ -1,0 +1,18 @@
+{
+  "source_tree": "op_eval_20261116",
+  "migration_kind": "operator package extraction; v1 files unchanged",
+  "reference_source_sha256": "6368f40c1597e330c8c5f44d030874da54f01e613760b87f53e06f3f6ffabc7e",
+  "legacy_baseline_file": "op_eval_20261116/baselines/6368f40c_device0_20261116_3716fcb4.json",
+  "legacy_baseline_is_active": false,
+  "reason": "v2 package and fixed harness identities differ; recompile and recalibrate after trusted NPU profiler backend integration",
+  "source_files": {
+    "TASK.txt": "c92f1190c978c9dee8af41feed76b58d2a35869cd668779e2809e02a81d183fd",
+    "harness/main.asc": "ab1f2be63b32349a0741fe11cf934b22004b45b812edf8ff79bc75e4b6a12df6",
+    "harness/CMakeLists.txt": "8399af5ed78949f2cdbe6ad646c330f145e07da774700c6f6854ee5e750c84f8",
+    "evaluator/cases.py": "58fbea41c9954d64f91aea88d6fee30618051cdbdbf8892458a8eb28d3683799",
+    "reference/kernel.asc": "6368f40c1597e330c8c5f44d030874da54f01e613760b87f53e06f3f6ffabc7e",
+    "starters/from_scratch/kernel.asc": "2b044fd3d6e24f91305fa6dcfc378ca1f42301671e43114ca05de1ff259fc2d8",
+    "starters/optimize/kernel.asc": "955ffc3580d48cab5e2f44ff727ebd4df8414b292596aa2f5f4b2693701cb46f",
+    "protocol.json": "e56da2c8bae362ad7f1fe245602f9f52d72dbd5a44cefa1b9af67631cc585860"
+  }
+}

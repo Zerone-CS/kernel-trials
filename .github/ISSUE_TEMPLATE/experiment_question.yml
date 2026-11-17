@@ -1,0 +1,36 @@
+name: Experiment design / 实验设计
+description: 讨论如何验证一种 Agent 方法、添加任务或解释对照结果。
+title: "[Experiment] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先阅读 RESEARCH_GUIDE.md 与 docs/EXPERIMENT_SPEC.md。这里只需公开可分享的材料，不要上传凭据、隐藏答案或私有知识库。
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: 研究问题
+      description: 改变什么方法，预计改善哪类场景或指标？
+    validations:
+      required: true
+  - type: textarea
+    id: design
+    attributes:
+      label: 计划或已执行的实验
+      description: task、track、control/method、runner、每场预算、重复次数和执行顺序。
+    validations:
+      required: true
+  - type: textarea
+    id: visibility
+    attributes:
+      label: 方法与数据可见性
+      description: 方法是否看过目标题目参考代码、优化轨迹、测试反馈；哪些工具或用户配置在条件间不同？
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 结果或待澄清问题
+      description: 若已有结果，请提供全部计划数、成功/失败/未知、有效 pair 数及脱敏报告；没有结果也可讨论设计。
+    validations:
+      required: true

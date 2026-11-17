@@ -1,0 +1,10 @@
+{
+  "public": [
+    {"case_id": "public_small", "n": 32, "pattern": "random", "performance": true},
+    {"case_id": "public_tail", "n": 4097, "pattern": "random", "performance": true}
+  ],
+  "hidden": [
+    {"case_id": "hidden_tail", "n": 17, "pattern": "random", "performance": false},
+    {"case_id": "hidden_signed", "n": 513, "pattern": "signed", "performance": false}
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "vector_add_cpu_example",
+  "version": "1.0.0",
+  "task": "task.md",
+  "editable_file": "kernel.asc",
+  "tracks": {
+    "from_scratch": "starters/from_scratch/kernel.asc",
+    "optimize": "starters/optimize/kernel.asc"
+  },
+  "harness": "harness",
+  "public_files": {"operator_contract.h": "public/operator_contract.h"},
+  "adapter": "judge.py",
+  "cases": "cases.json",
+  "protocol": "protocol.json",
+  "reference": "reference/kernel.asc",
+  "security": {"operator_profile": "cpu_example_untrusted"},
+  "build": {
+    "commands": [["c++", "-std=c++14", "-O2", "{project}/main.cpp", "-o", "{build}/runner"]],
+    "runner": "runner"
+  },
+  "candidate_policy": {
+    "maximum_source_bytes": 1048576,
+    "allowed_include_headers": ["operator_contract.h", "cstddef", "cstdint", "cmath", "algorithm", "stdexcept", "limits"]
+  }
+}

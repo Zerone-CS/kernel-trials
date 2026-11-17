@@ -1,0 +1,64 @@
+name: Bug report / 缺陷报告
+description: 报告可复现的使用、裁判、实验驱动或报告问题。
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先阅读 SECURITY.md。凭据泄露、越权或可利用安全问题不要放在公开 Issue；不要上传 .eval、裁判数据库、原始 Agent 日志或密钥。
+  - type: input
+    id: revision
+    attributes:
+      label: 项目版本
+      description: Commit、发布版本或源码摘要。
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 问题范围
+      options:
+        - 安装或 Agent 入口
+        - 单场 check / bench / final
+        - compare / 重复运行 / 恢复
+        - 正确性或性能测量
+        - 报告与统计
+        - 文档
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 脱敏环境信息
+      description: 操作系统、Python、Agent CLI 版本、声明的模型；NPU 问题另含硬件、CANN/驱动。勿填写认证配置和私有地址。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 最小复现
+      description: 从干净临时工作区开始的步骤、task/track、脱敏配置和调用命令。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为与最小证据
+      description: 结果状态、错误类别、必要的短日志；不要粘贴完整模型对话或秘密。
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 提交前检查
+      options:
+        - label: 已检查内容不含 token、API key、隐藏种子、SSH 私钥和未经授权的资料。
+          required: true
+        - label: 已说明是否发生重试、--new、方法变更或进程中断。
+          required: true

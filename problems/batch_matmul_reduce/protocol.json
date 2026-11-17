@@ -1,0 +1,49 @@
+{
+  "name": "batch_matmul_reduce_v2_audited_profile_development",
+  "platform": "ascend_npu",
+  "testing_only": false,
+  "official_scoring_available": false,
+  "npu_arch": "dav-2201",
+  "runtime": {"device": 0, "cores": 0},
+  "public_seed": 0,
+  "dependencies": ["CANN / Ascend C", "cmake", "numpy", "ml_dtypes"],
+  "correctness": {
+    "repeats": 3,
+    "case_specific_repeats_are_minimum": true,
+    "atol": 0.0001,
+    "rtol": 0.0001,
+    "golden": "actual quantized input values -> FP64 BMM -> max N -> sum M -> FP32",
+    "finite_required": true,
+    "all_output_elements_must_pass": true,
+    "capture_each_call": true,
+    "cross_shape_same_process_reentry_covered": false
+  },
+  "timing": {
+    "metric": "msprof_device_task_duration",
+    "supported_by_v2_runner": true,
+    "warmup_calls": 8,
+    "measured_calls": 32,
+    "independent_captures": 3,
+    "aggregation": "median of per-capture medians",
+    "trusted_for_competitive_scoring": false,
+    "secondary_metric": "host_us is diagnostic only; never substitute it for device duration",
+    "invocation_audit": "poison output, verify inputs/guards and capture every call outside measured compute task duration",
+    "association": "isolated serial single-case process; exactly one device compute task per call is declared and task count checked, not independently attested"
+  },
+  "score": {
+    "enabled": true,
+    "formula": "100 / (1 + log_1.5(max(1, t_candidate / t_reference)))",
+    "aggregate": "arithmetic mean across all 15 public performance shapes",
+    "reference_source_sha256": "6368f40c1597e330c8c5f44d030874da54f01e613760b87f53e06f3f6ffabc7e",
+    "reference_is_theoretical_optimum": false,
+    "requires_fresh_calibration": true,
+    "reason": "Frozen source is preserved; legacy measurements belong to the old package/harness/protocol identity and are not active v2 baselines"
+  },
+  "limits": {"build_seconds": 300, "case_seconds": 120, "profile_seconds": 120},
+  "limitations": [
+    "No accepted hostile-code isolation backend; legacy Host C++ shares the runner process",
+    "The 24 boundary shapes come from the inspectable old project; only evaluator seed/input realizations are resampled",
+    "Repeated calls of one shape are covered; cross-shape process-state transitions are not",
+    "Development-only scores; same-process Host code is not an adversarially trusted measurement boundary"
+  ]
+}
